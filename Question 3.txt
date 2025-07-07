@@ -1,0 +1,64 @@
+There’s a search input at the top to filter products as the user types.
+Q3: How will you manage this input using a controlled component approach?
+
+App.jsx:
+
+import { useState } from "react";
+import ProductList from "./ProductList";
+
+const allProducts = [
+  { id: 1, name: "Shoes", price: 1200 },
+  { id: 2, name: "Shirt", price: 800 },
+  { id: 3, name: "Bag", price: 500 },
+];
+
+export default function App() {
+  const [search, setSearch] = useState("");
+
+  // Update search input value
+  function handleSearchChange(e) {
+    setSearch(e.target.value);
+  }
+
+  // Filter products based on search
+  const filtered = allProducts.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={search}
+        onChange={handleSearchChange}
+      />
+      <ProductList products={filtered} />
+    </div>
+  );
+}
+
+ParentComponent:
+
+import ProductCard from "./ProductCard";
+
+export default function ProductList({ products }) {
+  return (
+    <div>
+      {products.map((product) => (
+        <ProductCard 
+          key={product.id} 
+          name={product.name} 
+          price={product.price} 
+        />
+      ))}
+    </div>
+  );
+}
+
+
+
+
+
+
+

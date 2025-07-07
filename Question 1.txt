@@ -1,0 +1,39 @@
+ You have a ProductCard component that displays a product’s name and price.
+Q1: How will you pass these values from the parent component?
+
+Answer: Passing props from Parent to ProductCard
+
+
+Parent Component: 
+
+import ProductCard from './ProductCard';
+
+const products = [
+  { id: 1, name: "Shoes", price: 1999 },
+  { id: 2, name: "Shirt", price: 899 },
+];
+
+export default function ProductList() {
+  return (
+    <div>
+      {products.map(product => (
+        <ProductCard 
+          key={product.id}
+          name={product.name}
+          price={product.price}
+        />
+      ))}
+    </div>
+  );
+}
+
+Child Component (ProductCard.jsx):
+
+export default function ProductCard({ name, price }) {
+  return (
+    <div>
+      <h3>{name}</h3>
+      <p>Price: ₹{price}</p>
+    </div>
+  );
+}
