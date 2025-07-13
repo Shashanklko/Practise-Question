@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update and Clear Text</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input {
+      padding: 8px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      margin-right: 10px;
+    }
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="inputText" placeholder="Enter some text">
+  <button onclick="updateMessage()">Show Message</button>
+  <button onclick="clearAll()">Clear</button>
+
+  <p id="message">Message will appear here.</p>
+
+  <script>
+    function updateMessage() {
+      const input = document.getElementById("inputText").value;
+      document.getElementById("message").textContent = input || "No input provided.";
+    }
+
+    function clearAll() {
+      document.getElementById("inputText").value = "";
+      document.getElementById("message").textContent = "Message will appear here.";
+    }
+  </script>
+
+</body>
+</html>
